@@ -1,6 +1,6 @@
 package org.example.chapter12.controller;
 
-import org.example.chapter12.Student;
+import org.example.chapter12.model.Student;
 import org.example.chapter12.dto.StudentRequestDto;
 import org.example.chapter12.dto.StudentResponseDto;
 

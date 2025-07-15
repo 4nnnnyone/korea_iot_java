@@ -54,28 +54,50 @@ package org.example.chapter12;
 // 학생(사용자) >> View(화면 클릭) >> Controller(영양사) >> View(급식표 조회)
 //      >> Controller가 View에 전달 View 가 화면 출력
 
-// 1. Model
+// 1. Model: 데이터를 저장하는 역할
 class LunchMenu {
     private String menu;
 
     public String getMenu() { return menu; }
-    public void setMenu() { this.menu = menu; }
+    public void setMenu(String menu) { this.menu = menu; }
 }
 
 // 2. View: 데이터를 보여주는 역할
 class LunchView {
     public void displayMenu(String menu) {
         if (menu == null || menu.isBlank()) {
-            System.out.println("오늘 급식은 없습니다.");
-    } else {
-            System.out.println("오늘 급식은: " + menu);
+            System.out.println("오늘은 급식이 없습니다.");
+        } else {
+            System.out.println("오늘 급식 메뉴는: " + menu);
         }
+    }
 }
 
-// 3. Controller: Menu와 View를 연결하는 역할
+// 3. Controller: Model과 View를 연결하는 역할
 class LunchController {
     private LunchMenu model;
+    private LunchView view;
 
+    public LunchController(LunchMenu model, LunchView view) {
+        this.model = model;
+        this.view = view;
+    }
+
+    // 모델에 데이터를 저장
+    public void setLunchMenu(String menu) {
+        model.setMenu(menu);
+    }
+
+    // 모델 데이터를 뷰에 전달
+    public void updateView() {
+        String menu = model.getMenu();
+        view.displayMenu(menu);
+    }
+
+    public void studentRequestMenu() {
+        System.out.println("[학생 요청] 오늘 급식 뭐예요?");
+        updateView();
+    }
 }
 
 public class MVC {
@@ -84,14 +106,19 @@ public class MVC {
         LunchMenu menu = new LunchMenu();
         LunchView view = new LunchView();
 
-//        LunchController controller = new LunchController(menu, view);
+        LunchController controller = new LunchController(menu, view);
 
-//        controller.setLunchMenu("김밥, 떡볶이, 콜라");
-//        controller.updateView();
+        controller.studentRequestMenu();
 
-//        controller.setLunchMenu("김밥, 매운 떡볶이, 콜라");
-//        controller.updateView();
+        controller.setLunchMenu("김밥, 떡볶이, 콜라");
+//        controller.updateView(); // 오늘 급식 메뉴는: 김밥, 떡볶이, 콜라
+        controller.studentRequestMenu();
 
-        }
+        controller.setLunchMenu("김밥, 매운 떡볶이, 콜라");
+//        controller.updateView(); // 오늘 급식 메뉴는: 김밥, 매운 떡볶이, 콜라
+        controller.studentRequestMenu();
+
+        controller.setLunchMenu("");
+        controller.studentRequestMenu();
     }
 }

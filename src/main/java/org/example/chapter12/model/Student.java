@@ -1,4 +1,4 @@
-package org.example.chapter12;
+package org.example.chapter12.model;
 
 import java.time.LocalDateTime;
 

@@ -7,23 +7,22 @@ import java.util.List;
 import java.util.Scanner;
 
 public class BookView {
-    private final BookController controller;
+    // private final BookController controller;
     private final Scanner sc;
 
     public BookView(BookController controller, Scanner sc) {
-        this.controller = new BookController();
+        // this.controller = new BookController(dummyBooks);
         this.sc = new Scanner(System.in);
     }
 
-    public void showMenu() {
-        int choice = 0;
+    public void showMenu() {int choice = 0;
 
         while (choice != 4) {
             System.out.println("== Book Management System ==");
             System.out.println("1. Add a Book");
             System.out.println("2. Show all Books");
-            System.out.println("3. Search a Book");
-            System.out.println("4. ");
+            System.out.println("3. Search for a book title");
+            System.out.println("4. Quit");
 
             choice = sc.nextInt();
             sc.nextLine();
@@ -35,14 +34,14 @@ public class BookView {
                 case 2:
                     showAllBooksView();
                     break;
-                case 3:
-                    searchBookView();
-                    break;
+                // case 3:
+                    // searchBookView();
+                   // break;
                 case 4:
                     System.out.println("종료하겠습니다.");
                     break;
                 default:
-                    System.out.println("잘못된 입력입니다. 다시 선택해 주세요.");
+                    System.out.println("잘못된 입력입니다. 다시 선택해주세요.");
                     break;
             }
         }
@@ -56,29 +55,29 @@ public class BookView {
         System.out.println("책 출판사 입력");
         String publisher = sc.nextLine();
 
-        controller.addBook(title, author, publisher);
+        // controller.addBook(title, author, publisher);
     }
 
     private void showAllBooksView() {
-        List<Book> allBooks = controller.getAllBooks();
+        // List<Book> allBooks = controller.getAllBooks();
 
-        for (Book book: allBooks) {
-            System.out.println(book);
+        // for (Book book: allBooks) {
+            // System.out.println(book);
         }
     }
 
-    private  void searchBookView() {
+    ///private void searchBookView() {
         // view(요청)
-        System.out.println("책을 검색해 주세요.");
+        // System.out.println("책을 검색해주세요.");
 
-        String title = sc.nextLine();
+        // String title = sc.nextLine();
 
         // controller
-        List<Book> foundBooks = controller.searchBook(title);
+        // List<Book> foundBooks = controller.searchBook(title);
 
         // view(응답)
-        for (Book book: foundBooks) {
-            System.out.println(book);
-        }
-    }
-}
+        // for (Book book: foundBooks) {
+            // System.out.println(book);
+        // }
+    // }
+// }

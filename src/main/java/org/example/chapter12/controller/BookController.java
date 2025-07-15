@@ -9,7 +9,7 @@ public class BookController {
     // 실제 데이터들이 저장되는 리스트
     private List<Book> books;
 
-    public BookController() {
+    public BookController(List<Book> dummyBooks) {
         this.books = new ArrayList<>();
         // private final List<Book> books = new ArrayList<>(); - 필드 주입 형식
         // >> 코드 간결화, 초기값 확인에 용이

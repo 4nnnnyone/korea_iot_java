@@ -33,6 +33,7 @@ package org.example.chapter12;
 * */
 
 import org.example.chapter12.controller.StudentController;
+import org.example.chapter12.model.Student;
 import org.example.chapter12.view.StudentView;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class StudentManagement {
         Scanner sc = new Scanner(System.in);
 
         StudentView view = new StudentView(sc, controller);
+        view.showMenu();
 
     }
 }
